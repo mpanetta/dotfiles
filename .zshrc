@@ -34,3 +34,8 @@ autoload -Uz compinit && compinit
 autoload -Uz compinit && compinit
 autoload -Uz compinit && compinit
 autoload -Uz compinit && compinit
+autoload -Uz compinit && compinit
+
+# Aliases
+alias ls='ls -G'
+autoload -Uz compinit && compinit
