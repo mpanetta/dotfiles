@@ -1,3 +1,8 @@
+# History, history, blame it on the history!
+
+HISTSIZE=10000000
+SAVEHIST=10000000
+
 # RBEnv
 eval "$(rbenv init - zsh)"
 
@@ -38,4 +43,5 @@ autoload -Uz compinit && compinit
 
 # Aliases
 alias ls='ls -G'
+autoload -Uz compinit && compinit
 autoload -Uz compinit && compinit
