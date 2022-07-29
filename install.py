@@ -10,7 +10,7 @@ from os import listdir
 
 homepath = expanduser("~/")
 
-print "...backing up existing dotfiles"
+print("...backing up existing dotfiles")
 
 dotfiles = listdir("./files/")
 
