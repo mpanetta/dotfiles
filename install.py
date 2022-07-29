@@ -29,3 +29,6 @@ for dotfile in dotfiles:
     file_to_link = abspath("./files/" + dotfile)
     link = homepath + file
     symlink(file_to_link, link)
+
+    print("To set the global git ignore, type: \n git config --global core.excludesfile ~/.gitignore")
+    print("To source your shell with zsh, type: \n source ~/.zshrc")
