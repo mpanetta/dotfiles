@@ -1,0 +1,22 @@
+# History, history, blame it on the history!
+
+HISTSIZE=10000000
+SAVEHIST=10000000
+
+# RBEnv
+eval "$(rbenv init - zsh)"
+
+# Load
+autoload -Uz compinit && compinit
+autoload -Uz vcs_info
+autoload -U colors && colors
+
+# Prompt
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats '(%b)'
+setopt PROMPT_SUBST
+PROMPT='%2~ %F{196}${vcs_info_msg_0_}%f # '
+
+# Aliases
+alias rel='source ~/.zshrc'
+alias ls='ls -G'
