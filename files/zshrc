@@ -20,3 +20,4 @@ PROMPT='%2~ %F{196}${vcs_info_msg_0_}%f # '
 # Aliases
 alias rel='source ~/.zshrc'
 alias ls='ls -G'
+alias be='bundle exec'
