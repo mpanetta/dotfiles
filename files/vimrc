@@ -18,15 +18,24 @@ setlocal shiftwidth=2
 
 let NERDTreeShowHidden=1
 let @/ = ""
+let g:rspec_command = "Dispatch rspec {spec}"
 
 " source .vimrc and :PlugInstall after changes
 call plug#begin()
   Plug 'preservim/NERDTree'
   Plug 'tomtom/tcomment_vim'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'tpope/vim-rails'
+  Plug 'tpope/vim-bundler'
+  Plug 'tpope/vim-dispatch'
+  Plug 'thoughtbot/vim-rspec'
 call plug#end()
 
 nmap <C-P> :FZF<CR>
+nmap <leader>t :call RunCurrentSpecFile()<CR>
+nmap <leader>s :call RunNearestSpec()<CR>
+nmap <leader>l :call RunLastSpec()<CR>
+nmap <leader>a :call RunAllSpecs()<CR>
 
 noremap <leader>nt :NERDTreeToggle<CR>
 noremap <c-up> <c-w>+
