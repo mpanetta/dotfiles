@@ -48,6 +48,8 @@ noremap <c-left> <c-w>>
 noremap <c-right> <c-w><
 
 nnoremap Y y$
+nnoremap <tab>   <c-w>w
+nnoremap <S-tab> <c-w>W
 
 colorscheme 256_noir
 highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=233 guifg=NONE guibg=#121212
