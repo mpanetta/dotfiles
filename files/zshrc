@@ -23,9 +23,10 @@ alias ls='ls -G'
 alias be='bundle exec'
 
 # Global aliases
-alias -g G="| grep"
-alias -g L="| less"
-alias -g T="| tail"
+# alias -g G="| grep"
+# alias -g L="| less"
+# alias -g T="| tail"
+alias myip="/usr/local/bin/find_ip.rb"
 
 # Functions
 alias reach() { grep -IHrn $1 . }

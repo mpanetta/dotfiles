@@ -24,7 +24,7 @@ for dotfile in dotfiles:
         rename_to = file + "_backup"
         print("...backing up " + file + " to " + rename_to)
         rename(homepath + file, homepath + rename_to)
-     
+
     print("Linking " + file + "...")
     file_to_link = abspath("./files/" + dotfile)
     link = homepath + file
@@ -32,3 +32,17 @@ for dotfile in dotfiles:
 
     print("To set the global git ignore, type: \n git config --global core.excludesfile ~/.gitignore")
     print("To source your shell with zsh, type: \n source ~/.zshrc")
+
+print("...copying utils to /usr/local/bin/...")
+utils = listdir("./utils/")
+bin_path = expanduser("/usr/local/bin/")
+
+if(exists(bin_path) == False):
+    print(bin_path + " not found. Please run sudo mkdir -p -m 775 /usr/local/bin")
+    exit()
+
+for util in utils:
+    file_to_link = abspath("./utils/" + util)
+    link = bin_path + util
+    print("Linking " + file_to_link + " at: " + link)
+    symlink(file_to_link, link)
