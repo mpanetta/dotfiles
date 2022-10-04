@@ -21,12 +21,13 @@ PROMPT='%2~ %F{196}${vcs_info_msg_0_}%f # '
 alias rel='source ~/.zshrc'
 alias ls='ls -G'
 alias be='bundle exec'
+alias myip="/usr/local/bin/find_ip.rb"
+alias his="history 1"
 
 # Global aliases
-# alias -g G="| grep"
-# alias -g L="| less"
-# alias -g T="| tail"
-alias myip="/usr/local/bin/find_ip.rb"
+alias -g G="| grep"
+alias -g L="| less"
+alias -g T="| tail"
 
 # Functions
 alias reach() { grep -IHrn $1 . }
