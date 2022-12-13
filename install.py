@@ -31,6 +31,7 @@ for dotfile in dotfiles:
     symlink(file_to_link, link)
 
     print("To set the global git ignore, type: \n git config --global core.excludesfile ~/.gitignore")
+    print("Be sure to set the git pushing strategy: git config --global push.current")
     print("To source your shell with zsh, type: \n source ~/.zshrc")
 
 print("...copying utils to /usr/local/bin/...")
