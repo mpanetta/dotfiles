@@ -47,6 +47,7 @@ nmap <leader>t :call RunCurrentSpecFile()<CR>
 nmap <leader>s :call RunNearestSpec()<CR>
 nmap <leader>l :call RunLastSpec()<CR>
 nmap <leader>a :call RunAllSpecs()<CR>
+nmap <leader>c :g#\({\n\)\@<=#.,/\.*[{}]\@=/-1 sort
 
 noremap <leader>nt :NERDTreeToggle<CR>
 noremap <c-up> <c-w>+
