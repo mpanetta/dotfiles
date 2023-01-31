@@ -1,3 +1,12 @@
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+  let l:branchname = GitBranch()
+  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+endfunction
+
 set nobackup
 set nowrap
 set ignorecase
@@ -14,10 +23,23 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set showtabline=2
+set laststatus=2
 set list listchars=tab:»·,trail:·
 set termguicolors
 set background=dark
 setlocal shiftwidth=2
+
+" status line"
+set statusline=
+set statusline+=%{StatuslineGit()}
+set statusline+=%#LineNr#
+set statusline+=\ %f
+set statusline+=%m
+set statusline+=%=
+set statusline+=%#CursorColumn#
+set statusline+=\ %y
+set statusline+=\[%{&fileformat}\]
+set statusline+=\ %l:%c
 
 let NERDTreeShowHidden=1
 let @/ = ""
