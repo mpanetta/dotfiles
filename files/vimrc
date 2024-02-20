@@ -1,12 +1,3 @@
-function! GitBranch()
-  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-endfunction
-
-function! StatuslineGit()
-  let l:branchname = GitBranch()
-  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
-endfunction
-
 set nobackup
 set nowrap
 set ignorecase
@@ -27,23 +18,18 @@ set laststatus=2
 set list listchars=tab:»·,trail:·
 set termguicolors
 set background=dark
-setlocal shiftwidth=2
+set exrc
 
-" status line"
-set statusline=
-set statusline+=%{StatuslineGit()}
-set statusline+=%#LineNr#
-set statusline+=\ %f
-set statusline+=%m
-set statusline+=%=
-set statusline+=%#CursorColumn#
-set statusline+=\ %y
-set statusline+=\[%{&fileformat}\]
-set statusline+=\ %l:%c
+setlocal shiftwidth=2
 
 let NERDTreeShowHidden=1
 let @/ = ""
-let g:rspec_command = "Dispatch rspec {spec}"
+let test#strategy = "dispatch"
+
+augroup quickfix
+    autocmd!
+    autocmd FileType qf setlocal wrap
+augroup END
 
 " install plug if it is not already installed
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -57,20 +43,21 @@ call plug#begin()
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'mileszs/ack.vim'
   Plug 'preservim/NERDTree'
-  Plug 'thoughtbot/vim-rspec'
   Plug 'tomtom/tcomment_vim'
   Plug 'tpope/vim-bundler'
   Plug 'tpope/vim-rails'
   Plug 'tpope/vim-dispatch'
+  Plug 'vim-test/vim-test'
 call plug#end()
 
 nmap <C-P> :FZF<CR>
-nmap <leader>t :call RunCurrentSpecFile()<CR>
-nmap <leader>s :call RunNearestSpec()<CR>
-nmap <leader>l :call RunLastSpec()<CR>
-nmap <leader>a :call RunAllSpecs()<CR>
 nmap <leader>c :g#\({\n\)\@<=#.,/\.*[{}]\@=/-1 sort
 nmap <leader>m `a
+
+nmap <silent> <leader>u :TestNearest<CR>
+nmap <silent> <leader>t :TestFile<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>a :TestSuite<CR>
 
 noremap <leader>nt :NERDTreeToggle<CR>
 noremap <c-up> <c-w>+
