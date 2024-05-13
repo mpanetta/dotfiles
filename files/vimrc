@@ -31,6 +31,18 @@ augroup quickfix
     autocmd FileType qf setlocal wrap
 augroup END
 
+" Functions
+
+" preserve current window state
+function! Preserve(command)
+  " Preparation: save window state
+  let l:saved_winview = winsaveview()
+  " Run the command:
+  execute a:command
+  " Clean up: restore previous window position
+  call winrestview(l:saved_winview)
+endfunction
+
 " install plug if it is not already installed
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent execute "!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
@@ -68,6 +80,7 @@ noremap <c-right> <c-w><
 nnoremap Y y$
 nnoremap <tab>   <c-w>w
 nnoremap <S-tab> <c-w>W
+nnoremap <leader>w :call Preserve("%s/\\s\\+$//e")<CR>
 
 colorscheme 256_noir
 highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=233 guifg=NONE guibg=#121212
