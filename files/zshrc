@@ -2,6 +2,7 @@
 
 HISTSIZE=10000000
 SAVEHIST=10000000
+setopt INC_APPEND_HISTORY
 
 # Path
 export PATH=/opt/homebrew/Cellar/imagemagic/7.1.0-52:$PATH
@@ -26,11 +27,12 @@ alias ls='ls -G'
 alias be='bundle exec'
 alias myip="/usr/local/bin/find_ip.rb"
 alias his="history 1"
+alias contrib="git ls-files | xargs -n1 git blame --line-porcelain | sed -n 's/^author //p' | sort -f | uniq -ic | sort -nr"
 
 # Global aliases
 
 # Functions
-alias reach() { grep -IHrn $1 . }
+alias reach() { grep -IHrn $1 . --exclude='*.log' }
 
 # Additional local configuration
 for conf in "$HOME/.config/zsh/config.d/"*.zsh; do
