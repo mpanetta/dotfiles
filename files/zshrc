@@ -28,6 +28,7 @@ alias be='bundle exec'
 alias myip="/usr/local/bin/find_ip.rb"
 alias his="history 1"
 alias contrib="git ls-files | xargs -n1 git blame --line-porcelain | sed -n 's/^author //p' | sort -f | uniq -ic | sort -nr"
+alias python='python3'
 
 # Global aliases
 
