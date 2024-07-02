@@ -60,6 +60,7 @@ call plug#begin()
   Plug 'tpope/vim-rails'
   Plug 'tpope/vim-dispatch'
   Plug 'vim-test/vim-test'
+  Plug 'madox2/vim-ai'
 call plug#end()
 
 nmap <C-P> :FZF<CR>
